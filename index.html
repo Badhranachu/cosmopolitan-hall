@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmopolitan Hall Kodungallur | Premium Luxury Venue</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #0a0a0a;
+            --maroon: #5e0a0a;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
+            --transition: all 0.4s ease-in-out;
+        }
+
+        /* Essential Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .playfair { font-family: 'Playfair Display', serif; }
+        .gold-text { color: var(--gold); }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25D366; color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            text-decoration: none; font-size: 24px; transition: var(--transition);
+        }
+        .whatsapp-btn:hover { transform: scale(1.1); }
+
+        /* Navigation */
+        nav {
+            position: absolute; width: 100%; z-index: 100;
+            padding: 30px 8%; display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; letter-spacing: 5px; font-weight: bold; color: var(--gold); }
+
+        /* Animated Hero Section */
+        .hero {
+            height: 100vh; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 5%;
+        }
+        .hero::before, .hero::after {
+            content: ""; position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            animation: heroFade 12s infinite; z-index: -2;
+        }
+        .hero::before { background-image: url('https://images.unsplash.com/photo-1519225495810-7517c31ca315?auto=format&fit=crop&q=80&w=2000'); }
+        .hero::after {
+            background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000');
+            animation-delay: 6s;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(rgba(0,0,0,.45),rgba(10,10,10,.95));
+            z-index: -1;
+        }
+        @keyframes heroFade {
+            0% { opacity: 1; } 45% { opacity: 1; } 55% { opacity: 0; } 100% { opacity: 0; }
+        }
+
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 20px; }
+        .hero-content p { letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; }
+
+        .btn-lux {
+            padding: 18px 45px; border: 1px solid var(--gold);
+            text-decoration: none; font-weight: bold; letter-spacing: 2px;
+            text-transform: uppercase; font-size: 0.8rem;
+            transition: var(--transition); display: inline-block; cursor: pointer;
+        }
+        .btn-fill { background: var(--gold); color: black; }
+        .btn-fill:hover { background: transparent; color: white; }
+
+        /* Content Sections */
+        .section-padding { padding: 100px 8%; }
+        .flex-row { display: flex; flex-wrap: wrap; align-items: center; gap: 60px; }
+        .flex-item { flex: 1; min-width: 320px; }
+
+        .img-frame { position: relative; padding: 15px; border: 1px solid var(--gold); }
+        .img-frame img { width: 100%; display: block; filter: brightness(0.8); transition: 0.5s; }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--maroon); padding: 50px 8%;
+            display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 30px;
+        }
+        .stat-item h3 { font-size: 3rem; color: var(--gold); }
+        .stat-item p { font-size: 0.7rem; letter-spacing: 3px; color: #ccc; }
+
+        /* Feature Cards with Hover Effect */
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { 
+            position: relative; height: 500px; overflow: hidden; padding: 0; 
+            display: flex; align-items: flex-end; border: 1px solid rgba(212, 175, 55, 0.1); 
+        }
+        .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.8s ease; z-index: 1; }
+        .card:hover .card-bg { transform: scale(1.1); }
+        .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,1) 5%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.2) 100%); z-index: 2; }
+        .card-content { position: relative; z-index: 3; padding: 40px; width: 100%; }
+
+        /* Form */
+        .form-box { background: #0f0f0f; padding: 60px; border: 1px solid var(--glass); }
+        .input-line {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid #333;
+            padding: 15px 0; color: white; margin-bottom: 30px; outline: none; font-family: inherit;
+        }
+        .input-line:focus { border-bottom-color: var(--gold); }
+
+        footer { padding: 60px; text-align: center; background: #000; border-top: 1px solid #111; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+            nav { padding: 20px; text-align: center; flex-direction: column; gap: 10px; }
+            .section-padding { padding: 60px 5%; }
+            .stats-bar { flex-direction: column; }
+            .card { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/91984XXXXXXXX" class="whatsapp-btn" target="_blank">💬</a>
+
+    <nav>
+        <div class="logo">COSMOPOLITAN</div>
+        <p style="font-size: 0.6rem; letter-spacing: 2px;">ERIYAD, KODUNGALLUR</p>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p>Thrissur's Most Iconic Venue</p>
+            <h1>Luxury Beyond <br><span class="gold-text italic">Expectations</span></h1>
+            <a href="#contact" class="btn-lux btn-fill">Check Availability</a>
+        </div>
+    </header>
+
+    <section class="stats-bar">
+        <div class="stat-item"><h3>1200+</h3><p>SEATING CAPACITY</p></div>
+        <div class="stat-item"><h3>1500+</h3><p>FLOATING GUESTS</p></div>
+        <div class="stat-item"><h3>350+</h3><p>LUXURY CAR PARKING</p></div>
+        <div class="stat-item"><h3>100%</h3><p>POWER BACKUP</p></div>
+    </section>
+
+    <section class="section-padding flex-row">
+        <div class="flex-item">
+            <h2 class="playfair" style="font-size: 3.5rem; margin-bottom: 30px;">The Masterpiece <br><span class="gold-text">of Events</span></h2>
+            <p style="color: #888; margin-bottom: 40px;">
+                Located in the historic town of Kodungallur, Cosmopolitan Hall is a premier, full-service convention center. Our venue features a stunning blend of modern architectural lines and spacious interiors.
+            </p>
+            <p style="margin-bottom: 30px;">
+                ✦ Dedicated Bridal Suites <br>
+                ✦ High-end Acoustic Design <br>
+                ✦ Same-floor Dining Facilities
+            </p>
+        </div>
+        <div class="flex-item">
+            <div class="img-frame">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200" alt="Venue Setup">
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 100px 8%; background: #050505;">
+        <h2 class="playfair italic" style="text-align: center; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 60px; color: white;">
+            Bespoke <span class="gold-text">Services</span>
+        </h2>
+        <div class="feature-grid">
+            <div class="card">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800');"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3 class="gold-text" style="font-size: 2rem; margin-bottom: 10px;">Royal Weddings</h3>
+                    <div style="width: 50px; height: 2px; background: var(--gold); margin-bottom: 20px;"></div>
+                    <p style="font-size: 0.9rem; color: #eee;">Crafting masterpieces in Eriyad. From traditional Nikkahs to grand Hindu receptions with 1500+ capacity management.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1505373633120-038c35348888?auto=format&fit=crop&q=80&w=800');"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3 class="gold-text" style="font-size: 2rem; margin-bottom: 10px;">Corporate Hub</h3>
+                    <div style="width: 50px; height: 2px; background: var(--gold); margin-bottom: 20px;"></div>
+                    <p style="font-size: 0.9rem; color: #eee;">Kodungallur's premier business venue. Featuring acoustic-perfect halls and professional AV support.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800');"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3 class="gold-text" style="font-size: 2rem; margin-bottom: 10px;">Gourmet Dining</h3>
+                    <div style="width: 50px; height: 2px; background: var(--gold); margin-bottom: 20px;"></div>
+                    <p style="font-size: 0.9rem; color: #eee;">Modern hygienic kitchens capable of serving grand Kerala Sadhyas and luxury banquets simultaneously.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding flex-row">
+        <div class="flex-item form-box">
+            <h2 class="playfair italic" style="font-size: 2.5rem; margin-bottom: 40px;">Request a <span class="gold-text">Viewing</span></h2>
+            <form>
+                <input type="text" placeholder="FULL NAME" class="input-line">
+                <input type="tel" placeholder="WHATSAPP NUMBER" class="input-line">
+                <select class="input-line" style="color: #666;">
+                    <option>Wedding Ceremony</option>
+                    <option>Corporate Seminar</option>
+                    <option>Engagement / Social</option>
+                </select>
+                <button type="button" class="btn-lux btn-fill" style="width: 100%; text-align: center; border: none;">Send Inquiry</button>
+            </form>
+        </div>
+        <div class="flex-item">
+            <h4 class="gold-text" style="letter-spacing: 5px; margin-bottom: 20px;">OUR LOCATION</h4>
+            <p style="color: #666; margin-bottom: 20px;">Eriyad, Kodungallur, Kerala - 680666</p>
+            <iframe style="width:100%; height:300px; border:0; filter: grayscale(1) invert(1);" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.6335359781324!2d76.1770!3d10.2185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDEzJzA2LjYiTiA3NsKwMTAnMzcuMiJF!5e0!3m2!1sen!2sin!4v1643385000000!5m2!1sen!2sin"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <h2 class="gold-text playfair" style="letter-spacing: 5px; margin-bottom: 20px;">COSMOPOLITAN HALL</h2>
+        <p style="font-size: 0.6rem; color: #444;">© 2026 KODUNGALLUR | LUXURY HOSPITALITY REDEFINED</p>
+    </footer>
+
+</body>
+</html>
