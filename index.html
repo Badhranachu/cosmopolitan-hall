@@ -14,7 +14,7 @@
             --maroon: #5e0a0a;
             --white: #ffffff;
             --glass: rgba(255, 255, 255, 0.05);
-            --transition: all 0.4s ease-in-out;
+            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         /* Essential Reset */
@@ -32,13 +32,29 @@
         h1, h2, h3, .playfair { font-family: 'Playfair Display', serif; }
         .gold-text { color: var(--gold); }
 
+        /* --- SCROLL ANIMATION CLASSES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered Delay for Grid Items */
+        .reveal:nth-child(2) { transition-delay: 0.1s; }
+        .reveal:nth-child(3) { transition-delay: 0.2s; }
+
         /* Floating WhatsApp Button */
         .whatsapp-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: #25D366; color: white; width: 60px; height: 60px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            text-decoration: none; font-size: 24px; transition: var(--transition);
+            text-decoration: none; font-size: 24px; transition: 0.3s;
         }
         .whatsapp-btn:hover { transform: scale(1.1); }
 
@@ -90,8 +106,9 @@
         .flex-row { display: flex; flex-wrap: wrap; align-items: center; gap: 60px; }
         .flex-item { flex: 1; min-width: 320px; }
 
-        .img-frame { position: relative; padding: 15px; border: 1px solid var(--gold); }
+        .img-frame { position: relative; padding: 15px; border: 1px solid var(--gold); transition: var(--transition); }
         .img-frame img { width: 100%; display: block; filter: brightness(0.8); transition: 0.5s; }
+        .img-frame:hover { transform: scale(1.02); }
 
         /* Stats Bar */
         .stats-bar {
@@ -101,13 +118,13 @@
         .stat-item h3 { font-size: 3rem; color: var(--gold); }
         .stat-item p { font-size: 0.7rem; letter-spacing: 3px; color: #ccc; }
 
-        /* Feature Cards with Hover Effect */
+        /* Feature Cards */
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .card { 
             position: relative; height: 500px; overflow: hidden; padding: 0; 
             display: flex; align-items: flex-end; border: 1px solid rgba(212, 175, 55, 0.1); 
         }
-        .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.8s ease; z-index: 1; }
+        .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 1s ease; z-index: 1; }
         .card:hover .card-bg { transform: scale(1.1); }
         .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,1) 5%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.2) 100%); z-index: 2; }
         .card-content { position: relative; z-index: 3; padding: 40px; width: 100%; }
@@ -142,22 +159,21 @@
 
     <header class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <p>Thrissur's Most Iconic Venue</p>
+        <div class="hero-content reveal active"> <p>Thrissur's Most Iconic Venue</p>
             <h1>Luxury Beyond <br><span class="gold-text italic">Expectations</span></h1>
             <a href="#contact" class="btn-lux btn-fill">Check Availability</a>
         </div>
     </header>
 
     <section class="stats-bar">
-        <div class="stat-item"><h3>1200+</h3><p>SEATING CAPACITY</p></div>
-        <div class="stat-item"><h3>1500+</h3><p>FLOATING GUESTS</p></div>
-        <div class="stat-item"><h3>350+</h3><p>LUXURY CAR PARKING</p></div>
-        <div class="stat-item"><h3>100%</h3><p>POWER BACKUP</p></div>
+        <div class="stat-item reveal"><h3>1200+</h3><p>SEATING CAPACITY</p></div>
+        <div class="stat-item reveal"><h3>1500+</h3><p>FLOATING GUESTS</p></div>
+        <div class="stat-item reveal"><h3>350+</h3><p>LUXURY CAR PARKING</p></div>
+        <div class="stat-item reveal"><h3>100%</h3><p>POWER BACKUP</p></div>
     </section>
 
     <section class="section-padding flex-row">
-        <div class="flex-item">
+        <div class="flex-item reveal">
             <h2 class="playfair" style="font-size: 3.5rem; margin-bottom: 30px;">The Masterpiece <br><span class="gold-text">of Events</span></h2>
             <p style="color: #888; margin-bottom: 40px;">
                 Located in the historic town of Kodungallur, Cosmopolitan Hall is a premier, full-service convention center. Our venue features a stunning blend of modern architectural lines and spacious interiors.
@@ -168,7 +184,7 @@
                 ✦ Same-floor Dining Facilities
             </p>
         </div>
-        <div class="flex-item">
+        <div class="flex-item reveal">
             <div class="img-frame">
                 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200" alt="Venue Setup">
             </div>
@@ -176,11 +192,11 @@
     </section>
 
     <section style="padding: 100px 8%; background: #050505;">
-        <h2 class="playfair italic" style="text-align: center; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 60px; color: white;">
+        <h2 class="playfair italic reveal" style="text-align: center; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 60px; color: white;">
             Bespoke <span class="gold-text">Services</span>
         </h2>
         <div class="feature-grid">
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800');"></div>
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -189,7 +205,7 @@
                     <p style="font-size: 0.9rem; color: #eee;">Crafting masterpieces in Eriyad. From traditional Nikkahs to grand Hindu receptions with 1500+ capacity management.</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1505373633120-038c35348888?auto=format&fit=crop&q=80&w=800');"></div>
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -198,7 +214,7 @@
                     <p style="font-size: 0.9rem; color: #eee;">Kodungallur's premier business venue. Featuring acoustic-perfect halls and professional AV support.</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800');"></div>
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -211,7 +227,7 @@
     </section>
 
     <section id="contact" class="section-padding flex-row">
-        <div class="flex-item form-box">
+        <div class="flex-item form-box reveal">
             <h2 class="playfair italic" style="font-size: 2.5rem; margin-bottom: 40px;">Request a <span class="gold-text">Viewing</span></h2>
             <form>
                 <input type="text" placeholder="FULL NAME" class="input-line">
@@ -224,17 +240,33 @@
                 <button type="button" class="btn-lux btn-fill" style="width: 100%; text-align: center; border: none;">Send Inquiry</button>
             </form>
         </div>
-        <div class="flex-item">
+        <div class="flex-item reveal">
             <h4 class="gold-text" style="letter-spacing: 5px; margin-bottom: 20px;">OUR LOCATION</h4>
             <p style="color: #666; margin-bottom: 20px;">Eriyad, Kodungallur, Kerala - 680666</p>
-            <iframe style="width:100%; height:300px; border:0; filter: grayscale(1) invert(1);" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.6335359781324!2d76.1770!3d10.2185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDEzJzA2LjYiTiA3NsKwMTAnMzcuMiJF!5e0!3m2!1sen!2sin!4v1643385000000!5m2!1sen!2sin"></iframe>
+            <iframe style="width:100%; height:300px; border:0; filter: grayscale(1) invert(1);" src="https://maps.google.com/maps?q=Eriyad,Kodungallur&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
         </div>
     </section>
 
     <footer>
-        <h2 class="gold-text playfair" style="letter-spacing: 5px; margin-bottom: 20px;">COSMOPOLITAN HALL</h2>
+        <h2 class="gold-text playfair reveal" style="letter-spacing: 5px; margin-bottom: 20px;">COSMOPOLITAN HALL</h2>
         <p style="font-size: 0.6rem; color: #444;">© 2026 KODUNGALLUR | LUXURY HOSPITALITY REDEFINED</p>
     </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
